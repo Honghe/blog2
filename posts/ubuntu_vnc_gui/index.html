@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  VNC远程登录无外接显示器的Ubuntu Desktop &ndash; Jack&#39;s Blog
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content="场景 机房服务器安装了Ubuntu Desktop，但没外接显示器，而有时我们需要远程至Ubuntu Desktop的GUI桌面。这里梳理出一个方案，主要有以下几点：
+ 使用Ubuntu内置的vino VNC提供远程桌面访问。 配置Ubuntu在服务器无外接显示器时启动桌面GUI。 配置Ubuntu自动登录桌面会话，以解决vino的一个缺陷。  环境  Ubuntu 16.04 &amp;amp; 18.04。  配置VNC服务 vino是Ubuntu内置的桌面共享VNC服务，也是最简单稳定的，虽然功能不多。
+安装：
+sudo apt install vino  配置：打开如下图的几个选项。
+启动无显示器Ubuntu的桌面GUI 默认情况下，服务器无外接显示器的话，Ubuntu不会启动桌面GUI。
+这里使用虚拟显示器(dummy monitor)方法：
+安装dummy monitor：
+sudo apt install xserver-xorg-video-dummy  编辑文件：
+sudo vi /usr/share/X11/xorg.conf.d/xorg.conf  写入如下内容(这里是配置为1024x768的分辨率)并重启：
+Section &amp;quot;Monitor&amp;quot; Identifier &amp;quot;Monitor0&amp;quot; HorizSync 28.0-80.0 VertRefresh 48.0-75.0 # https://arachnoid.com/modelines/ # 1024x768 @ 60.00 Hz (GTF) hsync: 47.70 kHz; pclk: 64.11 MHz Modeline &amp;quot;1024x768_60.00&amp;quot; 64.11 1024 1080 1184 1344 768 769 772 795 -HSync &#43;Vsync EndSection Section &amp;quot;Device&amp;quot; Identifier &amp;quot;Card0&amp;quot; Driver &amp;quot;dummy&amp;quot; VideoRam 256000 EndSection Section &amp;quot;Screen&amp;quot; DefaultDepth 24 Identifier &amp;quot;Screen0&amp;quot; Device &amp;quot;Card0&amp;quot; Monitor &amp;quot;Monitor0&amp;quot; SubSection &amp;quot;Display&amp;quot; Depth 24 Modes &amp;quot;1024x768_60.|">
+    
+
+    <meta name="apple-mobile-web-app-title" content="Jack&#39;s Blog">
+    
+    
+    
+    
+
+
+    <link rel="stylesheet" href="/blog2/assets/syntax.css">
+    <link rel="stylesheet" href="/blog2/assets/primer-build.css">
+    <link rel="stylesheet" href="/blog2/assets/style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://honghe.github.io/blog2/">
+    Jack&#39;s Blog
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">VNC远程登录无外接显示器的Ubuntu Desktop</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2019-06-24. Published at: 2019-06-24.">
+        
+          Published: 2019-06-24
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    
+
+<h1 id="场景">场景</h1>
+
+<p>机房服务器安装了Ubuntu Desktop，但没外接显示器，而有时我们需要远程至Ubuntu Desktop的GUI桌面。这里梳理出一个方案，主要有以下几点：</p>
+
+<ul>
+<li>使用Ubuntu内置的vino VNC提供远程桌面访问。</li>
+<li>配置Ubuntu在服务器无外接显示器时启动桌面GUI。</li>
+<li>配置Ubuntu自动登录桌面会话，以解决vino的一个缺陷。</li>
+</ul>
+
+<h1 id="环境">环境</h1>
+
+<ul>
+<li>Ubuntu 16.04 &amp; 18.04。</li>
+</ul>
+
+<h1 id="配置vnc服务">配置VNC服务</h1>
+
+<p>vino是Ubuntu内置的桌面共享VNC服务，也是最简单稳定的，虽然功能不多。</p>
+
+<p>安装：</p>
+
+<pre><code>sudo apt install vino
+</code></pre>
+
+<p>配置：打开如下图的几个选项。</p>
+
+<p><img src="images/DeepinScreenshot_select-area_20190624195507.png" alt="配置" /></p>
+
+<h1 id="启动无显示器ubuntu的桌面gui">启动无显示器Ubuntu的桌面GUI</h1>
+
+<p>默认情况下，服务器无外接显示器的话，Ubuntu不会启动桌面GUI。</p>
+
+<p>这里使用虚拟显示器(dummy monitor)方法：</p>
+
+<p>安装dummy monitor：</p>
+
+<pre><code>sudo apt install xserver-xorg-video-dummy
+</code></pre>
+
+<p>编辑文件：</p>
+
+<pre><code>sudo vi /usr/share/X11/xorg.conf.d/xorg.conf
+</code></pre>
+
+<p>写入如下内容(这里是配置为1024x768的分辨率)并重启：</p>
+
+<pre><code>Section &quot;Monitor&quot;
+  Identifier &quot;Monitor0&quot;
+  HorizSync 28.0-80.0
+  VertRefresh 48.0-75.0
+  # https://arachnoid.com/modelines/
+  # 1024x768 @ 60.00 Hz (GTF) hsync: 47.70 kHz; pclk: 64.11 MHz
+  Modeline &quot;1024x768_60.00&quot; 64.11 1024 1080 1184 1344 768 769 772 795 -HSync +Vsync
+EndSection
+Section &quot;Device&quot;
+  Identifier &quot;Card0&quot;
+  Driver &quot;dummy&quot;
+  VideoRam 256000
+EndSection
+Section &quot;Screen&quot;
+  DefaultDepth 24
+  Identifier &quot;Screen0&quot;
+  Device &quot;Card0&quot;
+  Monitor &quot;Monitor0&quot;
+  SubSection &quot;Display&quot;
+    Depth 24
+    Modes &quot;1024x768_60.00&quot;
+  EndSubSection
+EndSection
+</code></pre>
+
+<h1 id="自动登录桌面会话">自动登录桌面会话</h1>
+
+<p>温馨提示：下面的自动登录配置是不安全的做法。</p>
+
+<p>vino VNC服务有个问题，它是在Ubuntu桌面会话启动后才启动的(Log out登出桌面也即关闭了此服务)。vino VNC服务不启动的话，就无法VNC远程Ubuntu。</p>
+
+<p>因此配置Ubuntu自动登录桌面会话来规避之。方法如下：</p>
+
+<p>编辑文件：</p>
+
+<pre><code>sudo vi /etc/lightdm/lightdm.conf
+</code></pre>
+
+<p>追加如下内容并重启：</p>
+
+<pre><code>#追加
+[SeatDefaults]
+autologin-user=&lt;用户名&gt;
+autologin-user-timeout=0
+user-session=ubuntu
+</code></pre>
+
+<h1 id="faq">FAQ</h1>
+
+<h2 id="桌面登录后提示显示器分辨率不匹配">桌面登录后提示显示器分辨率不匹配</h2>
+
+<p>类似如下的提示：</p>
+
+<pre><code>none of the selected modes were compatible with the possible modes:
+Trying modes for CRTC 63 CRTC 63:
+trying mode 1024x768@60Hz with output at 1680x1050@60Hz (pass 0)
+CRTC 63: trying mode 800x600@60Hz with output at 1680x1050@60Hz (pass 0)
+CRTC 63: trying mode 800x600@56Hz with output at 1680x1050@60Hz (pass 0)
+</code></pre>
+
+<p>解决方法：删除旧的配置文件并重启(保险起见，重命名他)。</p>
+
+<pre><code>mv ~/.config/monitors.xml ~/.config/monitors.xml.backup
+</code></pre>
+
+<h2 id="xserver-xorg-video-dummy安装失败">xserver-xorg-video-dummy安装失败</h2>
+
+<p>安装时可能有如下错误：</p>
+
+<pre><code>$ sudo apt install xserver-xorg-video-dummy
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or if you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may help to resolve the situation:
+
+The following packages have unmet dependencies:
+ xserver-xorg-video-dummy : Depends: xorg-video-abi-20
+                            Depends: xserver-xorg-core (&gt;= 2:1.17.99.902)
+E: Unable to correct problems, you have held broken packages.
+</code></pre>
+
+<p>解决方法：安装跟Ubuntu版本对应的包。</p>
+
+<p>查看是否是<code>hwe</code>版本的Ubuntu内核。如有出现如下的过滤结果，说明是<code>hwe</code>内核。</p>
+
+<pre><code>$ dpkg -l|grep linux-headers|grep hwe
+ii  linux-headers-generic-hwe-18.04            4.18.0.22.72                                                                amd64        Generic Linux kernel headers
+</code></pre>
+
+<p>搜索<code>xserver-xorg-video-dummy</code>包：</p>
+
+<pre><code>$ sudo apt search xserver-xorg-video-dummy
+Sorting... Done
+Full Text Search... Done
+xserver-xorg-video-dummy/bionic 1:0.3.8-1build1 amd64
+  X.Org X server -- dummy display driver
+
+xserver-xorg-video-dummy-hwe-16.04/bionic 3:14.1 amd64
+  Transitional package for xserver-xorg-video-dummy-hwe-16.04
+
+xserver-xorg-video-dummy-hwe-18.04/bionic-updates 1:0.3.8-1build3~18.04.1 amd64
+  X.Org X server -- dummy display driver
+</code></pre>
+
+<p>安装对应的包：比如系统是18.04，<code>hwe</code>内核，则安装如下包：</p>
+
+<pre><code>sudo apt install xserver-xorg-video-dummy-hwe-18.04
+</code></pre>
+
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>VNC远程登录无外接显示器的Ubuntu Desktop</b>
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#场景">场景</a></li>
+<li><a href="#环境">环境</a></li>
+<li><a href="#配置vnc服务">配置VNC服务</a></li>
+<li><a href="#启动无显示器ubuntu的桌面gui">启动无显示器Ubuntu的桌面GUI</a></li>
+<li><a href="#自动登录桌面会话">自动登录桌面会话</a></li>
+<li><a href="#faq">FAQ</a>
+<ul>
+<li><a href="#桌面登录后提示显示器分辨率不匹配">桌面登录后提示显示器分辨率不匹配</a></li>
+<li><a href="#xserver-xorg-video-dummy安装失败">xserver-xorg-video-dummy安装失败</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  
+
+  
+    <div>
+      
+    </div>
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    
+
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+      </div>
+    </div>
+
+
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+  </body>
+</html>

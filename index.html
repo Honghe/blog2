@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta name="generator" content="Hugo 0.55.6" />
+    
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  Jack&#39;s Blog &ndash; Jack&#39;s Blog
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content="">
+    
+
+    <meta name="apple-mobile-web-app-title" content="Jack&#39;s Blog">
+    
+    
+    
+    
+
+
+    <link rel="stylesheet" href="/blog2/assets/syntax.css">
+    <link rel="stylesheet" href="/blog2/assets/primer-build.css">
+    <link rel="stylesheet" href="/blog2/assets/style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://honghe.github.io/blog2/">
+    Jack&#39;s Blog
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div>
+
+  <h1>Jack&#39;s Blog</h1>
+  
+
+  
+  <div>
+    <div>
+      <a href="/blog2/posts/ubuntu_vnc_gui/">
+        <h3>VNC远程登录无外接显示器的Ubuntu Desktop</h3>
+      </a>
+      <small>https://honghe.github.io/blog2/posts/ubuntu_vnc_gui/</small>
+      2019-06-24
+    </div>
+    场景 机房服务器安装了Ubuntu Desktop，但没外接显示器，而有时我们需要远程至Ubuntu Desktop的GUI桌面。这里梳理出一个方案，主要有以下几点：
+ 使用Ubuntu内置的vino VNC提供远程桌面访问。 配置Ubuntu在服务器无外接显示器时启动桌面GUI。 配置Ubuntu自动登录桌面会话，以解决vino的一个缺陷。  环境  Ubuntu 16.04 &amp; 18.04。  配置VNC服务 vino是Ubuntu内置的桌面共享VNC服务，也是最简单稳定的，虽然功能不多。
+安装：
+sudo apt install vino  配置：打开如下图的几个选项。
+启动无显示器Ubuntu的桌面GUI 默认情况下，服务器无外接显示器的话，Ubuntu不会启动桌面GUI。
+这里使用虚拟显示器(dummy monitor)方法：
+安装dummy monitor：
+sudo apt install xserver-xorg-video-dummy  编辑文件：
+sudo vi /usr/share/X11/xorg.conf.d/xorg.conf  写入如下内容(这里是配置为1024x768的分辨率)并重启：
+Section &quot;Monitor&quot; Identifier &quot;Monitor0&quot; HorizSync 28.0-80.0 VertRefresh 48.0-75.0 # https://arachnoid.com/modelines/ # 1024x768 @ 60.00 Hz (GTF) hsync: 47.70 kHz; pclk: 64.11 MHz Modeline &quot;1024x768_60.00&quot; 64.11 1024 1080 1184 1344 768 769 772 795 -HSync +Vsync EndSection Section &quot;Device&quot; Identifier &quot;Card0&quot; Driver &quot;dummy&quot; VideoRam 256000 EndSection Section &quot;Screen&quot; DefaultDepth 24 Identifier &quot;Screen0&quot; Device &quot;Card0&quot; Monitor &quot;Monitor0&quot; SubSection &quot;Display&quot; Depth 24 Modes &quot;1024x768_60.
+  </div>
+  
+  <div>
+    <div>
+      <a href="/blog2/posts/misc/flask_over_https/flask_over_https/">
+        <h3>Flask Over Https</h3>
+      </a>
+      <small>https://honghe.github.io/blog2/posts/misc/flask_over_https/flask_over_https/</small>
+      2019-05-31
+    </div>
+    Flask Over Https Ref: https://blog.miguelgrinberg.com/post/running-your-flask-application-over-https
+  </div>
+  
+  <div>
+    <div>
+      <a href="/blog2/posts/online_course/online_course/">
+        <h3>Online Course</h3>
+      </a>
+      <small>https://honghe.github.io/blog2/posts/online_course/online_course/</small>
+      2019-05-27
+    </div>
+    Online Course www.kadenze.com 印度的一个在线免费学习网站，认证需要交钱。
+  </div>
+  
+  <div>
+    <div>
+      <a href="/blog2/posts/machine_hearing/">
+        <h3>Machine Hearing</h3>
+      </a>
+      <small>https://honghe.github.io/blog2/posts/machine_hearing/</small>
+      2019-03-12
+    </div>
+    Machine Hearing 机器听觉(类似人耳的特征编解码) 系列文章5篇，从目前使用类似图像CNN的原理来处理音频的缺陷说起，再讲人耳听觉原理，最后设计新的基于Gammatone filterbank的LSTM编解码网络。
+Ref: https://towardsdatascience.com/human-like-machine-hearing-with-ai-3-3-fd6238426416
+Timeline RNN已老，TCN崛起！李飞飞团队提出口语语音识别新方法 TCN时间卷积网络(Temporal Convolutional Network)
+https://zhuanlan.zhihu.com/p/58946645
+  </div>
+  
+  <div>
+    <div>
+      <a href="/blog2/posts/hello/hello/">
+        <h3>Hello</h3>
+      </a>
+      <small>https://honghe.github.io/blog2/posts/hello/hello/</small>
+      2019-03-11
+    </div>
+    $$ f{x} = \int_{-\infty}^\infty \hat f\xi\,e^{2 \pi i \xi x} \,d\xi $$
+$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
+  </div>
+  
+
+  
+
+
+</div>
+
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+          <div id="toc" class="mb-3">
+          </div>
+          
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    
+
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+      </div>
+    </div>
+
+
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+  </body>
+</html>

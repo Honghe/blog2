@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+   &ndash; Jack&#39;s Blog
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content="">
+    
+
+    <meta name="apple-mobile-web-app-title" content="Jack&#39;s Blog">
+    
+    
+    
+    
+
+
+    <link rel="stylesheet" href="/blog2/assets/syntax.css">
+    <link rel="stylesheet" href="/blog2/assets/primer-build.css">
+    <link rel="stylesheet" href="/blog2/assets/style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://honghe.github.io/blog2/">
+    Jack&#39;s Blog
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div>
+
+  <h1></h1>
+  
+
+  
+    
+    
+<div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-3">
+  <div class="Subhead mb-2">
+    <div class="Subhead-heading">
+      <a href="/blog2/posts/ubuntu_vnc_gui/">
+        <div class="h2 mt-1 mb-1">VNC远程登录无外接显示器的Ubuntu Desktop</div>
+      </a>
+    </div>
+    <div class="Subhead-description">
+      
+
+
+
+
+
+      <div class="float-md-right">
+        <span>2019-06-24</span>
+      </div>
+    </div>
+  </div>
+  <div class="text-gray">
+    
+    场景 机房服务器安装了Ubuntu Desktop，但没外接显示器，而有时我们需要远程至Ubuntu Desktop的GUI桌面。这里梳理出一个方案，主要有以下几点：
+ 使用Ubuntu内置的vino VNC提供远程桌面访问。 配置Ubuntu在服务器无外接显示器时启动桌面GUI。 配置Ubuntu自动登录桌面会话，以解决vino的一个缺陷。  环境  Ubuntu 16.04 &amp; 18.04。  配置VNC服务 vino是Ubuntu内置的桌面共享VNC服务，也是最简单稳定的，虽然功能不多。
+安装：
+sudo apt install vino  配置：打开如下图的几个选项。
+启动无显示器Ubuntu的桌面GUI 默认情况下，服务器无外接显示器的话，Ubuntu不会启动桌面GUI。
+这里使用虚拟显示器(dummy monitor)方法：
+安装dummy monitor：
+sudo apt install xserver-xorg-video-dummy  编辑文件：
+sudo vi /usr/share/X11/xorg.conf.d/xorg.conf  写入如下内容(这里是配置为1024x768的分辨率)并重启：
+Section &quot;Monitor&quot; Identifier &quot;Monitor0&quot; HorizSync 28.0-80.0 VertRefresh 48.0-75.0 # https://arachnoid.com/modelines/ # 1024x768 @ 60.00 Hz (GTF) hsync: 47.70 kHz; pclk: 64.11 MHz Modeline &quot;1024x768_60.00&quot; 64.11 1024 1080 1184 1344 768 769 772 795 -HSync +Vsync EndSection Section &quot;Device&quot; Identifier &quot;Card0&quot; Driver &quot;dummy&quot; VideoRam 256000 EndSection Section &quot;Screen&quot; DefaultDepth 24 Identifier &quot;Screen0&quot; Device &quot;Card0&quot; Monitor &quot;Monitor0&quot; SubSection &quot;Display&quot; Depth 24 Modes &quot;1024x768_60.
+    <a class="muted-link" href="/blog2/posts/ubuntu_vnc_gui/">…</a>
+  </div>
+</div>
+
+  
+    
+    
+<div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-3">
+  <div class="Subhead mb-2">
+    <div class="Subhead-heading">
+      <a href="/blog2/posts/misc/flask_over_https/flask_over_https/">
+        <div class="h2 mt-1 mb-1">Flask Over Https</div>
+      </a>
+    </div>
+    <div class="Subhead-description">
+      
+
+
+
+
+
+      <div class="float-md-right">
+        <span>2019-05-31</span>
+      </div>
+    </div>
+  </div>
+  <div class="text-gray">
+    
+    Flask Over Https Ref: https://blog.miguelgrinberg.com/post/running-your-flask-application-over-https
+    <a class="muted-link" href="/blog2/posts/misc/flask_over_https/flask_over_https/">…</a>
+  </div>
+</div>
+
+  
+    
+    
+<div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-3">
+  <div class="Subhead mb-2">
+    <div class="Subhead-heading">
+      <a href="/blog2/posts/online_course/online_course/">
+        <div class="h2 mt-1 mb-1">Online Course</div>
+      </a>
+    </div>
+    <div class="Subhead-description">
+      
+
+
+
+
+
+      <div class="float-md-right">
+        <span>2019-05-27</span>
+      </div>
+    </div>
+  </div>
+  <div class="text-gray">
+    
+    Online Course www.kadenze.com 印度的一个在线免费学习网站，认证需要交钱。
+    <a class="muted-link" href="/blog2/posts/online_course/online_course/">…</a>
+  </div>
+</div>
+
+  
+    
+    
+<div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-3">
+  <div class="Subhead mb-2">
+    <div class="Subhead-heading">
+      <a href="/blog2/posts/machine_hearing/">
+        <div class="h2 mt-1 mb-1">Machine Hearing</div>
+      </a>
+    </div>
+    <div class="Subhead-description">
+      
+
+
+
+
+
+      <div class="float-md-right">
+        <span>2019-03-12</span>
+      </div>
+    </div>
+  </div>
+  <div class="text-gray">
+    
+    Machine Hearing 机器听觉(类似人耳的特征编解码) 系列文章5篇，从目前使用类似图像CNN的原理来处理音频的缺陷说起，再讲人耳听觉原理，最后设计新的基于Gammatone filterbank的LSTM编解码网络。
+Ref: https://towardsdatascience.com/human-like-machine-hearing-with-ai-3-3-fd6238426416
+Timeline RNN已老，TCN崛起！李飞飞团队提出口语语音识别新方法 TCN时间卷积网络(Temporal Convolutional Network)
+https://zhuanlan.zhihu.com/p/58946645
+    <a class="muted-link" href="/blog2/posts/machine_hearing/">…</a>
+  </div>
+</div>
+
+  
+    
+    
+<div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-3">
+  <div class="Subhead mb-2">
+    <div class="Subhead-heading">
+      <a href="/blog2/posts/hello/hello/">
+        <div class="h2 mt-1 mb-1">Hello</div>
+      </a>
+    </div>
+    <div class="Subhead-description">
+      
+
+
+
+
+
+      <div class="float-md-right">
+        <span>2019-03-11</span>
+      </div>
+    </div>
+  </div>
+  <div class="text-gray">
+    
+    $$ f{x} = \int_{-\infty}^\infty \hat f\xi\,e^{2 \pi i \xi x} \,d\xi $$
+$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
+    <a class="muted-link" href="/blog2/posts/hello/hello/">…</a>
+  </div>
+</div>
+
+  
+
+  
+  
+
+
+
+
+</div>
+
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+
+  <div class="Box Box--blue p-2 mb-3 mt-5">
+    <a href="/blog2/tags/" class="link-gray-dark">
+      <h4>Tags</h4>
+    </a>
+    
+  </div>
+
+
+
+
+  <div class="Box Box--blue p-2 mb-3">
+    <a href="/blog2/categories/" class="link-gray-dark">
+      <h4>Categories</h4>
+    </a>
+    
+  </div>
+
+
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    
+
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+      </div>
+    </div>
+
+
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+  </body>
+</html>
