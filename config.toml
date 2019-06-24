@@ -1,0 +1,4 @@
+baseURL = "https://honghe.github.io/blog2/"
+languageCode = "zh-cn"
+title = "Jack's Blog"
+theme = "hugo-primer"

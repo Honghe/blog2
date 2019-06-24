@@ -1,0 +1,3 @@
+[submodule "themes/hugo-concise"]
+	path = themes/hugo-concise
+	url = git@github.com:Honghe/hugo-concise.git
