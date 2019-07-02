@@ -76,6 +76,14 @@ Section "Screen"
 EndSection
 ```
 
+检验配置文件的正确性：
+
+```
+X -config /usr/share/X11/xorg.conf.d/xorg.conf
+```
+
+若命令行显示正常则OK。
+
 # 自动登录桌面会话
 
 温馨提示：下面的自动登录配置是不安全的做法。
