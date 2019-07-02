@@ -13,16 +13,7 @@
     </title>
     
     
-    <meta name="description" property="og:description" content="场景 机房服务器安装了Ubuntu Desktop，但没外接显示器，而有时我们需要远程至Ubuntu Desktop的GUI桌面。这里梳理出一个方案，主要有以下几点：
- 使用Ubuntu内置的vino VNC提供远程桌面访问。 配置Ubuntu在服务器无外接显示器时启动桌面GUI。 配置Ubuntu自动登录桌面会话，以解决vino的一个缺陷。  环境  Ubuntu 16.04 &amp;amp; 18.04。  配置VNC服务 vino是Ubuntu内置的桌面共享VNC服务，也是最简单稳定的，虽然功能不多。
-安装：
-sudo apt install vino  配置：打开如下图的几个选项。
-启动无显示器Ubuntu的桌面GUI 默认情况下，服务器无外接显示器的话，Ubuntu不会启动桌面GUI。
-这里使用虚拟显示器(dummy monitor)方法：
-安装dummy monitor：
-sudo apt install xserver-xorg-video-dummy  编辑文件：
-sudo vi /usr/share/X11/xorg.conf.d/xorg.conf  写入如下内容(这里是配置为1024x768的分辨率)并重启：
-Section &amp;quot;Monitor&amp;quot; Identifier &amp;quot;Monitor0&amp;quot; HorizSync 28.0-80.0 VertRefresh 48.0-75.0 # https://arachnoid.com/modelines/ # 1024x768 @ 60.00 Hz (GTF) hsync: 47.70 kHz; pclk: 64.11 MHz Modeline &amp;quot;1024x768_60.00&amp;quot; 64.11 1024 1080 1184 1344 768 769 772 795 -HSync &#43;Vsync EndSection Section &amp;quot;Device&amp;quot; Identifier &amp;quot;Card0&amp;quot; Driver &amp;quot;dummy&amp;quot; VideoRam 256000 EndSection Section &amp;quot;Screen&amp;quot; DefaultDepth 24 Identifier &amp;quot;Screen0&amp;quot; Device &amp;quot;Card0&amp;quot; Monitor &amp;quot;Monitor0&amp;quot; SubSection &amp;quot;Display&amp;quot; Depth 24 Modes &amp;quot;1024x768_60.|">
+    <meta name="description" property="og:description" content="场景 机房服务器安装了Ubuntu Desktop，但没外接显示|">
     
 
     <meta name="apple-mobile-web-app-title" content="Jack&#39;s Blog">
@@ -32,9 +23,9 @@ Section &amp;quot;Monitor&amp;quot; Identifier &amp;quot;Monitor0&amp;quot; Hori
     
 
 
-    <link rel="stylesheet" href="/blog2/assets/syntax.css">
-    <link rel="stylesheet" href="/blog2/assets/primer-build.css">
-    <link rel="stylesheet" href="/blog2/assets/style.css">
+    <link rel="stylesheet" href="../../assets/syntax.css">
+    <link rel="stylesheet" href="../../assets/primer-build.css">
+    <link rel="stylesheet" href="../../assets/style.css">
   </head>
 
 
@@ -155,6 +146,13 @@ Section &quot;Screen&quot;
   EndSubSection
 EndSection
 </code></pre>
+
+<p>检验配置文件的正确性：</p>
+
+<pre><code>X -config /usr/share/X11/xorg.conf.d/xorg.conf
+</code></pre>
+
+<p>若命令行显示正常则OK。</p>
 
 <h1 id="自动登录桌面会话">自动登录桌面会话</h1>
 

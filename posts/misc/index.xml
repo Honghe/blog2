@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jack&#39;s Blog</title>
+    <link>https://honghe.github.io/blog2/posts/misc.html</link>
+    <description>Recent content on Jack&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 31 May 2019 16:53:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://honghe.github.io/blog2/posts/misc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Flask Over Https</title>
+      <link>https://honghe.github.io/blog2/posts/misc/flask_over_https/flask_over_https.html</link>
+      <pubDate>Fri, 31 May 2019 16:53:57 +0800</pubDate>
+      
+      <guid>https://honghe.github.io/blog2/posts/misc/flask_over_https/flask_over_https.html</guid>
+      <description>Flask Over Https Ref: https://blog.miguelgrinberg.com/post/running-your-flask-application-over-https</description>
+    </item>
+    
+    <item>
+      <title>Markdown Editor</title>
+      <link>https://honghe.github.io/blog2/posts/misc/markdown_editor/</link>
+      <pubDate>Fri, 31 May 2019 16:53:57 +0800</pubDate>
+      
+      <guid>https://honghe.github.io/blog2/posts/misc/markdown_editor/</guid>
+      <description>对比 Typora MarkText Notable WYSIWYW Y Y N，但是可以方便通过其它编辑器编辑 跨平台 y y</description>
+    </item>
+    
+  </channel>
+</rss>

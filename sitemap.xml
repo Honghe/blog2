@@ -3,29 +3,40 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://honghe.github.io/blog2/posts/</loc>
-    <lastmod>2019-06-24T16:53:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://honghe.github.io/blog2/</loc>
     <lastmod>2019-06-24T16:53:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://honghe.github.io/blog2/posts/ubuntu_vnc_gui/</loc>
+    <loc>https://honghe.github.io/blog2/posts.html</loc>
+    <lastmod>2019-06-24T16:53:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://honghe.github.io/blog2/posts/ubuntu_vnc_gui/ubuntu_vnc_gui.html</loc>
     <lastmod>2019-06-24T16:53:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://honghe.github.io/blog2/posts/misc/flask_over_https/flask_over_https/</loc>
+    <loc>https://honghe.github.io/blog2/posts/misc.html</loc>
+    <lastmod>2019-05-31T16:53:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://honghe.github.io/blog2/posts/misc/flask_over_https/flask_over_https.html</loc>
     <lastmod>2019-05-31T16:53:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://honghe.github.io/blog2/posts/online_course/online_course/</loc>
+    <loc>https://honghe.github.io/blog2/posts/misc/markdown_editor/</loc>
+    <lastmod>2019-05-31T16:53:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://honghe.github.io/blog2/posts/online_course/online_course.html</loc>
     <lastmod>2019-05-27T16:53:57+08:00</lastmod>
   </url>
   
@@ -35,17 +46,17 @@
   </url>
   
   <url>
-    <loc>https://honghe.github.io/blog2/posts/hello/hello/</loc>
+    <loc>https://honghe.github.io/blog2/posts/hello/hello.html</loc>
     <lastmod>2019-03-11T16:53:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://honghe.github.io/blog2/categories/</loc>
+    <loc>https://honghe.github.io/blog2/categories.html</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://honghe.github.io/blog2/tags/</loc>
+    <loc>https://honghe.github.io/blog2/tags.html</loc>
     <priority>0</priority>
   </url>
   
